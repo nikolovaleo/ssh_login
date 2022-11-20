@@ -1,0 +1,4 @@
+pyinstaller --onefile login.py
+
+
+C:\Users\e1426744\AppData\Local\Temp
