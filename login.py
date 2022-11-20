@@ -1,5 +1,5 @@
 import paramiko
-
+import sys
 def get_user_password(path):
 
     lines = open(path).readlines()
@@ -35,3 +35,5 @@ ssh.connect('tty.sdf.org', username=username, password=password)
 ssh_stdin, ssh_stdout, ssh_stderr = ssh.exec_command('en')
 
 print(ssh_stdout)
+
+sys.exit
