@@ -1,6 +1,11 @@
 import paramiko
 import sys
+from logbook import Logger, StreamHandler
 
+
+StreamHandler(sys.stdout).push_application()
+log = Logger('Logbook')
+log.info('Hello, World!')
 
 
 def get_user_password(path):
@@ -25,17 +30,6 @@ def get_user_password(path):
     return user, password
 
 
-def ssh_login(host, user, passwd):
-
-    ssh = paramiko.SSHClient()
-    ssh.load_system_host_keys()
-    ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-    ssh.connect(host, username=user, password=passwd)
-
-    
-    ssh_in, ssh_out, ssh_err = ssh.exec_command('ss -ltn')
-    print(ssh_in, ssh_out, ssh_err)
-
 
 def get_dic_ips(path):
     lines = open(path).readlines()
@@ -55,14 +49,16 @@ def get_dic_ips(path):
 
 
 
+def ssh_login(host, user, passwd):
 
+    ssh = paramiko.SSHClient()
+    ssh.load_system_host_keys()
+    ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+    ssh.connect(host, username=user, password=passwd)
 
-            
-
-
-
-
-
+    
+    ssh_in, ssh_out, ssh_err = ssh.exec_command('ss -ltn')
+    print(ssh_in, ssh_out, ssh_err)
 
 
 user, password = get_user_password('ips.txt')
@@ -78,7 +74,6 @@ for ip in ip_list:
             ssh_login(host, user, password)
         except:
             pass
-
 
 
 
