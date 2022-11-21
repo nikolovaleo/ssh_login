@@ -20,27 +20,22 @@ def get_user_password(path):
     print(user, password)
     return user, password
 
-#username, password = get_user_password("ips.txt")
 
-def ssh_login():
-
-
-    host = "tty.sdf.org"
-    username = "nikolov"
-    password = "mHfYoQEg5iyStw"
+def ssh_login(host, user, passwd):
 
     ssh = paramiko.SSHClient()
     ssh.load_system_host_keys()
     ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-    ssh.connect('tty.sdf.org', username=username, password=password)
+    ssh.connect(host=host, username=user, password=passwd)
 
     
     ssh_in, ssh_out, ssh_err = ssh.exec_command('ss -ltn')
     print(ssh_in, ssh_out, ssh_err)
 
 
+user, password = get_user_password('ips.txt')
+host = 'tty.sdf.org'
 
-
-ssh_login()
+ssh_login(host, user, password)
 
 sys.exit()
