@@ -82,5 +82,5 @@ for ip in ip_list:
 
 
 
-wait = input()
+wait = input('---------')
 sys.exit()
