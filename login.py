@@ -70,11 +70,14 @@ ip_list = get_dic_ips('ips.txt')
 print(ip_list)
 
 for ip in ip_list:
-
+    print(ip)
     host = ip[0]
 
-    for i in range(ip[1])
-    ssh_login(host, user, password)
+    for i in range(0,ip[1]):
+        try:
+            ssh_login(host, user, password)
+        except:
+            pass
 
 
 
