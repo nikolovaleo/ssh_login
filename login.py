@@ -38,4 +38,5 @@ host = '192.168.13.1'
 
 ssh_login(host, user, password)
 
+wait = input()
 sys.exit()
