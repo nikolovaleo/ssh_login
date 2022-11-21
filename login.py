@@ -25,7 +25,7 @@ def get_user_password(path):
 def ssh_login():
 
     ssh = paramiko.SSHClient()
-    ss.load_system_host_keys()
+    ssh.load_system_host_keys()
     ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
     ssh.connect('tty.sdf.org', username=username, password=password)
 
