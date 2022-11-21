@@ -34,7 +34,7 @@ def ssh_login(host, user, passwd):
 
 
 user, password = get_user_password('ips.txt')
-host = 'tty.sdf.org'
+host = '192.168.13.1'
 
 ssh_login(host, user, password)
 
