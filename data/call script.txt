@@ -1,0 +1,51 @@
+Hi, thank you for calling SureService
+
+
+
+This is Leonardo, how can i help you today?
+----------------------------------------------------------------------
+
+
+
+Thank you for calling Emerson Sure Service
+This is Leonardo, how may i help you?
+
+
+
+So, i know the procedure but i dont have it on the top of my head rigth now, so why dont we do this. I'll take your details and brefly i'll be contacting you with an inital email. 
+
+
+
+I will have to open a ticket, can you provide us some information:
+
+I'm going to opend a ticket for this 
+
+
+
+I wild have to do some reseach
+I will have to do 
+
+
+Lets Open the Call Record!
+
+0009-1107-3714
+0009-1107-3716
+
+
+Could you provide us your contract number or system ID?
+
+
+drop 7
+
+i/o devices
+i/o interface 1
+branch 2
+slot 1
+port 1
+device 35
+service tag number:     ait-300004
+fundation mirror
+
+arron.kremer@kcaoint.gov
+
+

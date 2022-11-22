@@ -1,0 +1,3 @@
+    host = "tty.sdf.org"
+    username = "nikolov"
+    password = "mHfYoQEg5iyStw"
