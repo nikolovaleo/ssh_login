@@ -1,10 +1,7 @@
 import paramiko
 import sys
-import logbook
+
 #sys.stdout = open('log.txt', 'w')
-
-logbook.StreamHandler(paramiko).push_application()
-
 def get_user_password(path):
     
     lines = open(path).readlines()
@@ -14,12 +11,16 @@ def get_user_password(path):
         if not ips:
             if "user" in line:
                 x_list = line.replace(" ","").replace("\n","").split("=")
+                print(x_list)
                 user = x_list[1]
             if "pass" in line:
                 x_list = line.replace(" ","").replace("\n","").split("=")
+                print(x_list)
                 password = x_list[1]
             else:
                 pass
+    
+    print(user, password)
     return user, password
 
 def get_dic_ips(path):
@@ -34,10 +35,7 @@ def get_dic_ips(path):
 
         elif ips:
             x_list = line.replace(" ","").replace("\n","").split("\t")
-            try:
-                par_ordenado = [x_list[0],int(x_list[1])]
-            except:
-                par_ordenado = [x_list[0],3]
+            par_ordenado = [x_list[0],int(x_list[1])]
             ip_list.append(par_ordenado)
     return ip_list
 
@@ -47,8 +45,6 @@ def ssh_login(host, user, passwd):
     ssh = paramiko.SSHClient()
     ssh.load_system_host_keys()
     ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-    
-    
     ssh.connect(host, username=user, password=passwd)
 
     if ssh.get_transport() is not None:
@@ -61,26 +57,16 @@ def ssh_login(host, user, passwd):
 
 
 user, password = get_user_password('ips.txt')
-print(f"\n  User, password: {user}, {password}")
+
+host = "192.168.13.1"
+user = "root"
+password = "wdpf"
 
 
-ip_list = get_dic_ips('ips.txt')
-print("\nip_list: ", ip_list, "\n\n-------------------------------------\n")
-
-for ip in ip_list:
-    print("[  HOST |  #Trys ]")
-    print(ip)
-    print('---------------------')
-    host = ip[0]
-
-    for i in range(0,ip[1]):
-        try:
-            print(f'[{host}]log-in try #{i+1}')
-            ssh_login(host, user, password)
-        except:
-            pass
+ssh_login(host, user, password)
 
 
-wait = input('\n\n-------------------------------------\n----end---Press enter to close:    ')
+
+wait = input('---------')
 sys.stdout.close()
 sys.exit()
